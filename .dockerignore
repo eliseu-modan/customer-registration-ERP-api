@@ -1,0 +1,13 @@
+.git
+.gitignore
+.vs
+.vscode
+.dotnet
+.nuget
+bin
+obj
+**/bin
+**/obj
+**/.DS_Store
+erp.db
+build.log

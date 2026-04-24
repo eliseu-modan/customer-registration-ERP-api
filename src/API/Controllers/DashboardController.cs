@@ -1,0 +1,15 @@
+using ERP.Application.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
+namespace ERP.API.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+[Authorize(Roles = "Admin")]
+public class DashboardController : ControllerBase
+{
+    [HttpGet]
+    public async Task<IActionResult> Get([FromServices] DashboardService dashboardService, CancellationToken cancellationToken) =>
+        Ok(await dashboardService.GetAsync(cancellationToken));
+}

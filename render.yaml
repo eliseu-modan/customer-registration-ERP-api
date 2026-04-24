@@ -1,0 +1,35 @@
+services:
+  - name: erp-api
+    type: web
+    runtime: docker
+    plan: starter
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    autoDeployTrigger: commit
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: ASPNETCORE_URLS
+        value: http://0.0.0.0:10000
+      - key: ConnectionStrings__DefaultConnection
+        fromDatabase:
+          name: erp-db
+          property: connectionString
+      - key: Jwt__Issuer
+        value: ERP.API
+      - key: Jwt__Audience
+        value: ERP.Client
+      - key: Jwt__SecretKey
+        generateValue: true
+      - key: Jwt__ExpirationMinutes
+        value: "120"
+      - key: ExternalApis__ViaCepBaseUrl
+        value: https://viacep.com.br/ws/
+
+databases:
+  - name: erp-db
+    plan: basic-256mb
+    region: oregon
+    postgresMajorVersion: "18"
