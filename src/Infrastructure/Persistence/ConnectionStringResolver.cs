@@ -8,9 +8,9 @@ public static class ConnectionStringResolver
     public static string Resolve(IConfiguration configuration)
     {
         var rawConnectionString =
-            configuration.GetConnectionString("DefaultConnection") ??
-            Environment.GetEnvironmentVariable("DATABASE_URL") ??
-            throw new InvalidOperationException("Connection string 'DefaultConnection' não foi configurada.");
+    Environment.GetEnvironmentVariable("DATABASE_URL") ??
+    configuration.GetConnectionString("DefaultConnection") ??
+    throw new InvalidOperationException("Connection string não configurada.");
 
         if (rawConnectionString.StartsWith("postgres://", StringComparison.OrdinalIgnoreCase) ||
             rawConnectionString.StartsWith("postgresql://", StringComparison.OrdinalIgnoreCase))
