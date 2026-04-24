@@ -882,14 +882,14 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\repositories\\ERP-api\\src\\API\\ERP.API.csproj",
+      "projectUniqueName": "E:\\repositories\\Customer-registration-ERP-api\\src\\API\\ERP.API.csproj",
       "projectName": "ERP.API",
-      "projectPath": "E:\\repositories\\ERP-api\\src\\API\\ERP.API.csproj",
+      "projectPath": "E:\\repositories\\Customer-registration-ERP-api\\src\\API\\ERP.API.csproj",
       "packagesPath": "C:\\Users\\junio\\.nuget\\packages\\",
-      "outputPath": "E:\\repositories\\ERP-api\\src\\API\\obj\\",
+      "outputPath": "E:\\repositories\\Customer-registration-ERP-api\\src\\API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "E:\\repositories\\ERP-api\\NuGet.Config",
+        "E:\\repositories\\Customer-registration-ERP-api\\NuGet.Config",
         "C:\\Users\\junio\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
@@ -902,11 +902,11 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
-            "E:\\repositories\\ERP-api\\src\\Application\\ERP.Application.csproj": {
-              "projectPath": "E:\\repositories\\ERP-api\\src\\Application\\ERP.Application.csproj"
+            "E:\\repositories\\Customer-registration-ERP-api\\src\\Application\\ERP.Application.csproj": {
+              "projectPath": "E:\\repositories\\Customer-registration-ERP-api\\src\\Application\\ERP.Application.csproj"
             },
-            "E:\\repositories\\ERP-api\\src\\Infrastructure\\ERP.Infrastructure.csproj": {
-              "projectPath": "E:\\repositories\\ERP-api\\src\\Infrastructure\\ERP.Infrastructure.csproj"
+            "E:\\repositories\\Customer-registration-ERP-api\\src\\Infrastructure\\ERP.Infrastructure.csproj": {
+              "projectPath": "E:\\repositories\\Customer-registration-ERP-api\\src\\Infrastructure\\ERP.Infrastructure.csproj"
             }
           }
         }

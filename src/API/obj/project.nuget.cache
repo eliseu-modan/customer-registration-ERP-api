@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MNzCjkqEUzU=",
+  "dgSpecHash": "RwivEPYCIIk=",
   "success": true,
-  "projectFilePath": "E:\\repositories\\ERP-api\\src\\API\\ERP.API.csproj",
+  "projectFilePath": "E:\\repositories\\Customer-registration-ERP-api\\src\\API\\ERP.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\junio\\.nuget\\packages\\microsoft.entityframeworkcore\\10.0.4\\microsoft.entityframeworkcore.10.0.4.nupkg.sha512",
     "C:\\Users\\junio\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\10.0.4\\microsoft.entityframeworkcore.abstractions.10.0.4.nupkg.sha512",

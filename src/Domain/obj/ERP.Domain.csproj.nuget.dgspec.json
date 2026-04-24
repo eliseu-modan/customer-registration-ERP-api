@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\repositories\\ERP-api\\src\\Domain\\ERP.Domain.csproj": {}
+    "E:\\repositories\\Customer-registration-ERP-api\\src\\Domain\\ERP.Domain.csproj": {}
   },
   "projects": {
-    "E:\\repositories\\ERP-api\\src\\Domain\\ERP.Domain.csproj": {
+    "E:\\repositories\\Customer-registration-ERP-api\\src\\Domain\\ERP.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\repositories\\ERP-api\\src\\Domain\\ERP.Domain.csproj",
+        "projectUniqueName": "E:\\repositories\\Customer-registration-ERP-api\\src\\Domain\\ERP.Domain.csproj",
         "projectName": "ERP.Domain",
-        "projectPath": "E:\\repositories\\ERP-api\\src\\Domain\\ERP.Domain.csproj",
+        "projectPath": "E:\\repositories\\Customer-registration-ERP-api\\src\\Domain\\ERP.Domain.csproj",
         "packagesPath": "C:\\Users\\junio\\.nuget\\packages\\",
-        "outputPath": "E:\\repositories\\ERP-api\\src\\Domain\\obj\\",
+        "outputPath": "E:\\repositories\\Customer-registration-ERP-api\\src\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "E:\\repositories\\ERP-api\\NuGet.Config",
+          "E:\\repositories\\Customer-registration-ERP-api\\NuGet.Config",
           "C:\\Users\\junio\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [

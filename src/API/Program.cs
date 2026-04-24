@@ -1,4 +1,3 @@
-using System.Text.Encodings.Web;
 using System.Text.Json.Serialization;
 using ERP.API.Auth;
 using ERP.Infrastructure;
@@ -8,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// 🔐 CORS
 var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? [];
 
 builder.Services.AddCors(options =>
@@ -24,23 +24,29 @@ builder.Services.AddCors(options =>
     });
 });
 
+// 🧱 Infraestrutura (DB)
 builder.Services.AddInfrastructure(builder.Configuration);
 
+// 🔐 Auth
 builder.Services
     .AddAuthentication("Bearer")
     .AddScheme<AuthenticationSchemeOptions, JwtAuthenticationHandler>("Bearer", _ => { });
 
 builder.Services.AddAuthorization();
+
+// 🎯 Controllers
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
         options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
     });
 
+// 📄 Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new() { Title = "ERP API", Version = "v1" });
+
     options.AddSecurityDefinition("Bearer", new()
     {
         Name = "Authorization",
@@ -50,6 +56,7 @@ builder.Services.AddSwaggerGen(options =>
         In = Microsoft.OpenApi.Models.ParameterLocation.Header,
         Description = "Informe o token JWT."
     });
+
     options.AddSecurityRequirement(new()
     {
         {
@@ -68,29 +75,58 @@ builder.Services.AddSwaggerGen(options =>
 
 var app = builder.Build();
 
-using (var scope = app.Services.CreateScope())
+// 🌐 PORTA DO RAILWAY (CRÍTICO)
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+app.Urls.Add($"http://0.0.0.0:{port}");
+
+Console.WriteLine($"🚀 API iniciando na porta {port}...");
+
+// 🗄️ BANCO (NÃO BLOQUEIA STARTUP)
+_ = Task.Run(async () =>
 {
-    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    await dbContext.Database.MigrateAsync();
-
-    if (await dbContext.Database.CanConnectAsync())
+    try
     {
-        var seeder = scope.ServiceProvider.GetRequiredService<DatabaseSeeder>();
-        await seeder.SeedAsync();
-    }
-}
+        using var scope = app.Services.CreateScope();
+        var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
 
+        Console.WriteLine("🔌 Rodando migrations...");
+        await dbContext.Database.MigrateAsync();
+
+        if (await dbContext.Database.CanConnectAsync())
+        {
+            Console.WriteLine("🌱 Rodando seed...");
+            var seeder = scope.ServiceProvider.GetRequiredService<DatabaseSeeder>();
+            await seeder.SeedAsync();
+        }
+
+        Console.WriteLine("✅ Banco pronto");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"❌ Erro no banco: {ex.Message}");
+    }
+});
+
+// 🧪 Swagger (dev)
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
+// 🔐 Middlewares
 app.UseCors("Frontend");
-app.UseHttpsRedirection();
+
+// ⚠️ Em cloud pode quebrar, então deixa comentado no começo
+// app.UseHttpsRedirection();
+
 app.UseAuthentication();
 app.UseAuthorization();
+
+// ❤️ Healthcheck (Railway usa isso)
 app.MapGet("/health", () => Results.Ok(new { status = "ok" })).AllowAnonymous();
+
+// 🎯 Controllers
 app.MapControllers();
 
 app.Run();

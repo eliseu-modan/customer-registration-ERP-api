@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7uhNRBWXXu4=",
+  "dgSpecHash": "5fu/frpuqTY=",
   "success": true,
-  "projectFilePath": "E:\\repositories\\ERP-api\\src\\Application\\ERP.Application.csproj",
+  "projectFilePath": "E:\\repositories\\Customer-registration-ERP-api\\src\\Application\\ERP.Application.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

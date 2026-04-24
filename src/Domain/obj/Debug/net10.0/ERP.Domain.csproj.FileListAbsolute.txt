@@ -9,3 +9,15 @@ E:\repositories\ERP-api\src\Domain\obj\Debug\net10.0\ERP.Domain.dll
 E:\repositories\ERP-api\src\Domain\obj\Debug\net10.0\refint\ERP.Domain.dll
 E:\repositories\ERP-api\src\Domain\obj\Debug\net10.0\ERP.Domain.pdb
 E:\repositories\ERP-api\src\Domain\obj\Debug\net10.0\ref\ERP.Domain.dll
+E:\repositories\Customer-registration-ERP-api\src\Domain\bin\Debug\net10.0\ERP.Domain.deps.json
+E:\repositories\Customer-registration-ERP-api\src\Domain\bin\Debug\net10.0\ERP.Domain.dll
+E:\repositories\Customer-registration-ERP-api\src\Domain\bin\Debug\net10.0\ERP.Domain.pdb
+E:\repositories\Customer-registration-ERP-api\src\Domain\obj\Debug\net10.0\ERP.Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\repositories\Customer-registration-ERP-api\src\Domain\obj\Debug\net10.0\ERP.Domain.AssemblyInfoInputs.cache
+E:\repositories\Customer-registration-ERP-api\src\Domain\obj\Debug\net10.0\ERP.Domain.AssemblyInfo.cs
+E:\repositories\Customer-registration-ERP-api\src\Domain\obj\Debug\net10.0\ERP.Domain.csproj.CoreCompileInputs.cache
+E:\repositories\Customer-registration-ERP-api\src\Domain\obj\Debug\net10.0\ERP.Domain.sourcelink.json
+E:\repositories\Customer-registration-ERP-api\src\Domain\obj\Debug\net10.0\ERP.Domain.dll
+E:\repositories\Customer-registration-ERP-api\src\Domain\obj\Debug\net10.0\refint\ERP.Domain.dll
+E:\repositories\Customer-registration-ERP-api\src\Domain\obj\Debug\net10.0\ERP.Domain.pdb
+E:\repositories\Customer-registration-ERP-api\src\Domain\obj\Debug\net10.0\ref\ERP.Domain.dll

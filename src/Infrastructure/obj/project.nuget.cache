@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Ob3fp1qI8ys=",
+  "dgSpecHash": "i92p7ZuPxHU=",
   "success": true,
-  "projectFilePath": "E:\\repositories\\ERP-api\\src\\Infrastructure\\ERP.Infrastructure.csproj",
+  "projectFilePath": "E:\\repositories\\Customer-registration-ERP-api\\src\\Infrastructure\\ERP.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\junio\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\junio\\.nuget\\packages\\microsoft.build.framework\\18.0.2\\microsoft.build.framework.18.0.2.nupkg.sha512",
