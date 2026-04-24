@@ -92,6 +92,9 @@ _ = Task.Run(async () =>
         Console.WriteLine("🔌 Rodando migrations...");
         await dbContext.Database.MigrateAsync();
 
+        var dbUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+         Console.WriteLine($"DATABASE_URL: {dbUrl}");
+
         if (await dbContext.Database.CanConnectAsync())
         {
             Console.WriteLine("🌱 Rodando seed...");
