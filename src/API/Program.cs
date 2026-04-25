@@ -14,18 +14,14 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("Frontend", policy =>
     {
-        if (allowedOrigins.Length == 0)
-        {
-            policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
-            return;
-        }
-
-policy
-    .WithOrigins(allowedOrigins)
-    .AllowAnyHeader()
-    .AllowAnyMethod()
-    .AllowCredentials();    });
+        policy
+            .WithOrigins("https://customer-registration-erp.vercel.app")
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
+    });
 });
+
 
 // 🧱 Infraestrutura (DB)
 builder.Services.AddInfrastructure(builder.Configuration);
