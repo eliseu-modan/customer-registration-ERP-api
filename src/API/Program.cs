@@ -20,8 +20,11 @@ builder.Services.AddCors(options =>
             return;
         }
 
-        policy.WithOrigins(allowedOrigins).AllowAnyHeader().AllowAnyMethod();
-    });
+policy
+    .WithOrigins(allowedOrigins)
+    .AllowAnyHeader()
+    .AllowAnyMethod()
+    .AllowCredentials();    });
 });
 
 // 🧱 Infraestrutura (DB)
