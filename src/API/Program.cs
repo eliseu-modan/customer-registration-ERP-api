@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+ValidateJwtConfiguration(builder.Configuration);
 
 // 🔐 CORS
 var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? [];
@@ -132,3 +133,29 @@ app.MapGet("/health", () => Results.Ok(new { status = "ok" })).AllowAnonymous();
 app.MapControllers();
 
 app.Run();
+
+static void ValidateJwtConfiguration(IConfiguration configuration)
+{
+    var issuer = configuration["Jwt:Issuer"];
+    var audience = configuration["Jwt:Audience"];
+    var secretKey = configuration["Jwt:SecretKey"];
+
+    Console.WriteLine($"JWT issuer: {issuer ?? "(null)"}");
+    Console.WriteLine($"JWT audience: {audience ?? "(null)"}");
+    Console.WriteLine($"JWT secret length: {secretKey?.Length ?? 0}");
+
+    if (string.IsNullOrWhiteSpace(issuer))
+    {
+        throw new InvalidOperationException("Jwt:Issuer deve ser configurada.");
+    }
+
+    if (string.IsNullOrWhiteSpace(audience))
+    {
+        throw new InvalidOperationException("Jwt:Audience deve ser configurada.");
+    }
+
+    if (string.IsNullOrWhiteSpace(secretKey) || secretKey.Length < 32)
+    {
+        throw new InvalidOperationException("Jwt:SecretKey deve ser configurada com pelo menos 32 caracteres.");
+    }
+}
