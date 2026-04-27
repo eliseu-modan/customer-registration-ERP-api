@@ -24,24 +24,20 @@ builder.Services.AddCors(options =>
 });
 
 
-// 🧱 Infraestrutura (DB)
 builder.Services.AddInfrastructure(builder.Configuration);
 
-// 🔐 Auth
 builder.Services
     .AddAuthentication("Bearer")
     .AddScheme<AuthenticationSchemeOptions, JwtAuthenticationHandler>("Bearer", _ => { });
 
 builder.Services.AddAuthorization();
 
-// 🎯 Controllers
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
         options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
     });
 
-// 📄 Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
@@ -75,13 +71,11 @@ builder.Services.AddSwaggerGen(options =>
 
 var app = builder.Build();
 
-// 🌐 PORTA DO RAILWAY (CRÍTICO)
 var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
 app.Urls.Add($"http://0.0.0.0:{port}");
 
 Console.WriteLine($"🚀 API iniciando na porta {port}...");
 
-// 🗄️ BANCO (NÃO BLOQUEIA STARTUP)
 _ = Task.Run(async () =>
 {
     try
@@ -110,26 +104,21 @@ _ = Task.Run(async () =>
     }
 });
 
-// 🧪 Swagger (dev)
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-// 🔐 Middlewares
 app.UseCors("Frontend");
 
-// ⚠️ Em cloud pode quebrar, então deixa comentado no começo
-// app.UseHttpsRedirection();
+
 
 app.UseAuthentication();
 app.UseAuthorization();
 
-// ❤️ Healthcheck (Railway usa isso)
 app.MapGet("/health", () => Results.Ok(new { status = "ok" })).AllowAnonymous();
 
-// 🎯 Controllers
 app.MapControllers();
 
 app.Run();
